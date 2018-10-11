@@ -11,13 +11,15 @@
 const Main = imports.ui.main;
 const Shell = imports.gi.Shell;
 
+const WorkspaceManager = global.screen || global.workspace_manager;
+
 var connectid = null;
 var reactiveBefore = null;
 
 function _showDesktop() {
     //TODO: when public, do that by meta_screen_show_desktop();
     
-    let activeWorkspace = global.screen.get_active_workspace();
+    let activeWorkspace = WorkspaceManager.get_active_workspace();
     let tracker = Shell.WindowTracker.get_default();
     let windows = activeWorkspace.list_windows();
     for (let i = 0; i < windows.length; i++) {
